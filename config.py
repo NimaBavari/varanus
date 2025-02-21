@@ -1,0 +1,17 @@
+resources = [
+    {"url": "https://www.google.com", "period": 5},
+    {"url": "https://www.example.com", "period": 3, "pattern": r"^[a-z]+$"},
+    {"url": "https://invalid-url.com", "period": 11},
+    {"url": "https://www.github.com", "period": 4},
+    {"url": "https://www.stackoverflow.com", "period": 6, "pattern": r"^\d{3}-\d{2}-\d{4}$"},
+    {"url": "http://www.wikipedia.org", "period": 7},
+    {"url": "https://www.invalid-url", "period": 8},
+    {"url": "https://www.reddit.com", "period": 8},
+    {"url": "https://www.amazon.com", "period": 5, "pattern": r"^[A-Za-z0-9]+$"},
+    {"url": "https://www.youtube.com", "period": 9},
+    {"url": "https://www.invalid.url", "period": 10},
+    {"url": "https://www.linkedin.com", "period": 6},
+    {"url": "https://www.twitter.com", "period": 4, "pattern": r"^@[a-zA-Z0-9_]+$"},
+    {"url": "https://www.python.org", "period": 3},
+    {"url": "https://invalid.url.com", "period": 9},
+]
