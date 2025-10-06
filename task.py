@@ -1,26 +1,14 @@
-import logging
 import re
 import sqlite3
-import sys
 from datetime import datetime
 from typing import Any, Callable, TypeAlias
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from db import DBRepository
+from lg import logger
 
 TaskHandler: TypeAlias = Callable[[str, str | None], None]
-
-logger = logging.getLogger(__name__)
-if not logger.hasHandlers():
-    logger.setLevel(logging.DEBUG)
-
-    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
-
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setFormatter(formatter)
-
-    logger.addHandler(console_handler)
 
 
 class Task:
