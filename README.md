@@ -1,39 +1,54 @@
 # Varanus
 
-Simple monitoring daemon service.
+A lightweight monitoring daemon service. 
 
-## Overview
+## Features
 
-- Type-checked, documented codebase.
-- Fully covered with exception handling: no invisible cases.
-- In-house implemented concurrency (scheduler, worker, etc.): no external libraries.
-- No use of any third party libraries in general; the system was built with only the Python standard library. There are some dev dependencies though for the codebase quality check CI workflow.
-- File-based SQLite database with optimised connection acquisition.
-
-Please, see the docstrings and comments for more granular descriptions.
-
-See also: [Usage](#usage) and [Scripts](#scripts).
+- Concurrent URL monitoring with configurable check intervals
+- Response time and status code tracking
+- Optional regex pattern matching on response content
+- SQLite database storage
+- Multi-threaded architecture with scheduler and worker threads
 
 ## Usage
 
-Go to `config.py` and set your resources. Resources are a list of URLs; period and the regexp pattern (or the lack thereof) is configured on a per-URL basis. An example `resources` list is already configured but you can change it. 
-
-Task execution follows an interface (`TaskHandler`); you can define your custom task execution function, obeying the signature. One such function is already implemented: see `handle_task` in `task.py`. The class `Task` takes a task handler function as an argument.
-
-Run:
+Configure URLs and check intervals in `config.py`, then start the daemon:
 
 ```console
 make start
 ```
 
-to spin up the system.
+Stop with `Ctrl+C`.
 
-## Scripts
+## Configuration
 
-Run:
+Edit `config.py` to define monitored resources:
+
+```python
+resources = [
+    {"url": "https://example.com", "period": 30},
+    {"url": "https://server.com", "period": 60, "pattern": r"^\d{3}-\d{2}-\d{4}$"}
+]
+```
+
+- `url`: Target URL to monitor
+- `period`: Check interval in seconds
+- `pattern`: Optional regex pattern to search in response content
+
+## Development
+
+Install development dependencies:
+
+```console
+pip install -r dev_requirements.txt
+```
+
+Run code quality checks:
 
 ```console
 make code-quality
 ```
 
-to clean up the codebase if you ever touch it.
+## Database
+
+Response data is stored in `monitoring.db` with timestamps, response times, status codes, and pattern matches.
