@@ -51,7 +51,7 @@ def worker(worker_id: int) -> None:
 
 
 def start_workers(num_workers: int = 3) -> List[Thread]:
-    """Start multiple worker threads for parallel task processing."""
+    """Starts multiple worker threads for parallel task processing."""
     workers = []
     for i in range(num_workers):
         worker_thread = Thread(target=worker, args=(i,), daemon=True)

@@ -7,7 +7,7 @@ import threading
 class DBRepository:
     """SQLite repository with thread-safe operations.
 
-    Utilises thread-local connections to ensure thread safety while implementing the singleton pattern for table
+    Utilises thread-local connections to ensure thread safety while implementing the Singleton pattern for table
     initialisation.
     """
 
